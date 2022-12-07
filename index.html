@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <div class="date">
+                <span class="day">dd</span>/
+                <span class="month">mm</span>/
+                <span class="year">yyyy</span>
+            </div>
+            <div class="timer">
+                <div class="timer__count">ss:mm:hh
+                </div>
+                <div class="timer__buttons">
+                    <button class="start">Start</button>
+                    <button class="pause">Pause</button>
+                    <button class="reset">Reset</button>
+                </div>
+            </div>
+            
+        </header>
+        <section class="create-category">
+            <form id="new-category-form">
+                <input id="new-category-input" placeholder="e.g back exercises" type="text" />
+                <input id="new-category-submit" type="submit" value="Add category">
+            </form>
+        </section>
+        <main>
+            <section class="todo-list">
+                <details class="spoiler">
+                    <summary>
+                        <div class="list" id="todo-list">
+                            <div class="todo-content">
+                                <input type="text" value="upper body" readonly/>
+                            </div>
+                            <div class="actions">
+                                <button class="edit">Edit</button>
+                                <button class="delete">Delete</button>
+                            </div>
+                        </div>
+                    </summary>
+                    <form id="new-exercise-form">
+                        <input placeholder="push ups" type="text" />
+                        <input type="submit" value="Add exercise">
+                    </form>
+                    <div class="list" id="todo-list">
+                            <input type="checkbox"/>
+                        <div class="todo-content">
+                            <input type="text" value="push ups" readonly/>
+                        </div>
+                        <div class="actions">
+                            <button class="edit">Edit</button>
+                            <button class="delete">Delete</button>
+                        </div>
+                    </div>
+                </details>
+                
+
+            </section>
+        </main>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+</html>

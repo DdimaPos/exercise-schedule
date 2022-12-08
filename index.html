@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -41,7 +41,7 @@
                     <summary>
                         <div class="list" id="todo-list">
                             <div class="todo-content">
-                                <input type="text" value="upper body" readonly/>
+                                <input type="text" value="Upper body" readonly/>
                             </div>
                             <div class="actions">
                                 <button class="edit">Edit</button>
@@ -50,11 +50,12 @@
                         </div>
                     </summary>
                     <form id="new-exercise-form">
-                        <input placeholder="push ups" type="text" />
-                        <input type="submit" value="Add exercise">
+                        <input id="new-exercise-input" placeholder="push ups" type="text" />
+                        <input id="new-exercise-submit" type="submit" value="Add exercise">
                     </form>
-                    <div class="list" id="todo-list">
-                            <input type="checkbox"/>
+                    <div class="ex__list" id="ex-todo-list">
+                            <input type="radio"/>
+                            <span class="check"></span>
                         <div class="todo-content">
                             <input type="text" value="push ups" readonly/>
                         </div>

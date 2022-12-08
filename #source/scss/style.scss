@@ -38,12 +38,17 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 	--light:#EEE;
 	--pink:#EC4899;
 	--purple:#8B5Cf6;
+	--purple-glow:#8a5cf6b7;
 }
 body{
 	background-color: var(--dark);
 	color: var(--gray);
 	font-family: 'Montserrat', sans-serif;
 
+}
+input[type="checkbox"],
+input[type="radio"]{
+	display: none;
 }
 .wrapper{
 	max-width: 1200px;
@@ -86,9 +91,10 @@ header{
 	#new-category-form{
 		display: flex;
 		#new-category-input{
+			color: var(--gray);
 			flex:1 1 0%;
 			background-color:var(--darker);
-			padding: 15px;
+			padding: 15px 15px 15px 25px;
 			margin-right: 10px;
 			border-radius: 10px;
 			font-size: 18px;
@@ -115,32 +121,107 @@ main{
 	margin: 15px 0 0 0;
 	border-radius: 10px;
 	padding: 10px;
-	.spoiler{
-		background-color: var(--darkest);
+	details{
+		background-color: var(--darker);
+		border-radius: 10px;
 		summary{
+			background-color: var(--darkest);
+			border-radius: 10px;
 			display: block;
 			.list{
 				display: flex;
 				.todo-content{
-					
-					border-radius: 10px 0 0 10px;
 					flex: 1 1 0%;
 					cursor: pointer;
 					padding: 20px;
 					input{
-						width: fit-content;
-						background-color: var(--dark);
-						font-size: 20px;
+						background-color: var(--darkest);
+						color: var(--light);
+						width:30%;
+						font-size: 25px;
+						transition: 0.4s;
+						&:not(:read-only){
+							color: var(--pink);
+						}
 					}
 				}
 				.actions{
 					display: flex;
 					align-items: center;
 					justify-content: space-between;
+					button{
+						font-size: 20px;
+						font-weight: 700;
+						text-transform: uppercase;
+						margin: 0 15px;
+						background-color: var(--darkest);
+						transition: 0.4s;
+						cursor: pointer;
+						&:hover{
+							opacity: 0.8;
+						}
+						&:active{
+							opacity:0.6;
+						}
+					}
 					.edit{
-
+						background-image: linear-gradient(to right, 
+						var(--pink), var(--purple));
+						-webkit-background-clip: text;
+						-webkit-text-fill-color: transparent;
+					}
+					.delete{
+						color: crimson;
 					}
 				}
+			}
+		}
+		#new-exercise-form{
+			padding: 15px;
+			display: flex;
+			#new-exercise-input{
+				flex:1 1 0%;
+				background-color:var(--darkest);
+				padding: 15px 15px 15px 25px;
+				margin-right: 10px;
+				border-radius: 10px;
+				font-size: 18px;
+				color: var(--gray);
+			}
+			#new-exercise-submit{
+				font-size: 17px;
+				font-weight: 700;
+				background-image: linear-gradient(to right, 
+				var(--pink), var(--purple));
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				cursor: pointer;
+				transition: 0.5s;
+				&:hover{
+					opacity: 0.8;
+				}
+				&:active{
+					opacity:0.6;
+				}
+			}
+		}
+		.ex__list{
+			margin: 15px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			.check{
+				display: flex;
+				border-radius: 50%;
+				width: 20px;
+				height: 20px;
+				justify-content: center;
+				align-items: center;
+				border: 2px solid var(--purple);
+				box-shadow: var(--purple-glow);
+			}
+			.todo-content{
+				flex: 1 1 0%;
 			}
 		}
 	}

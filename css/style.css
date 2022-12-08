@@ -78,12 +78,18 @@ h1, h2, h3, h4, h5, h6 {
   --light:#EEE;
   --pink:#EC4899;
   --purple:#8B5Cf6;
+  --purple-glow:#8a5cf6b7;
 }
 
 body {
   background-color: var(--dark);
   color: var(--gray);
   font-family: "Montserrat", sans-serif;
+}
+
+input[type=checkbox],
+input[type=radio] {
+  display: none;
 }
 
 .wrapper {
@@ -144,11 +150,12 @@ header .timer__buttons button {
   display: flex;
 }
 .create-category #new-category-form #new-category-input {
+  color: var(--gray);
   -webkit-box-flex: 1;
       -ms-flex: 1 1 0%;
           flex: 1 1 0%;
   background-color: var(--darker);
-  padding: 15px;
+  padding: 15px 15px 15px 25px;
   margin-right: 10px;
   border-radius: 10px;
   font-size: 18px;
@@ -176,33 +183,42 @@ main {
   border-radius: 10px;
   padding: 10px;
 }
-main .spoiler {
-  background-color: var(--darkest);
+main details {
+  background-color: var(--darker);
+  border-radius: 10px;
 }
-main .spoiler summary {
+main details summary {
+  background-color: var(--darkest);
+  border-radius: 10px;
   display: block;
 }
-main .spoiler summary .list {
+main details summary .list {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
-main .spoiler summary .list .todo-content {
-  border-radius: 10px 0 0 10px;
+main details summary .list .todo-content {
   -webkit-box-flex: 1;
       -ms-flex: 1 1 0%;
           flex: 1 1 0%;
   cursor: pointer;
   padding: 20px;
 }
-main .spoiler summary .list .todo-content input {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  background-color: var(--dark);
-  font-size: 20px;
+main details summary .list .todo-content input {
+  background-color: var(--darkest);
+  color: var(--light);
+  width: 30%;
+  font-size: 25px;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
-main .spoiler summary .list .actions {
+main details summary .list .todo-content input:not(:-moz-read-only) {
+  color: var(--pink);
+}
+main details summary .list .todo-content input:not(:read-only) {
+  color: var(--pink);
+}
+main details summary .list .actions {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -212,4 +228,97 @@ main .spoiler summary .list .actions {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+}
+main details summary .list .actions button {
+  font-size: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0 15px;
+  background-color: var(--darkest);
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  cursor: pointer;
+}
+main details summary .list .actions button:hover {
+  opacity: 0.8;
+}
+main details summary .list .actions button:active {
+  opacity: 0.6;
+}
+main details summary .list .actions .edit {
+  background-image: -webkit-gradient(linear, left top, right top, from(var(--pink)), to(var(--purple)));
+  background-image: linear-gradient(to right, var(--pink), var(--purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+main details summary .list .actions .delete {
+  color: crimson;
+}
+main details #new-exercise-form {
+  padding: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+main details #new-exercise-form #new-exercise-input {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 0%;
+          flex: 1 1 0%;
+  background-color: var(--darkest);
+  padding: 15px 15px 15px 25px;
+  margin-right: 10px;
+  border-radius: 10px;
+  font-size: 18px;
+  color: var(--gray);
+}
+main details #new-exercise-form #new-exercise-submit {
+  font-size: 17px;
+  font-weight: 700;
+  background-image: -webkit-gradient(linear, left top, right top, from(var(--pink)), to(var(--purple)));
+  background-image: linear-gradient(to right, var(--pink), var(--purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  cursor: pointer;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+main details #new-exercise-form #new-exercise-submit:hover {
+  opacity: 0.8;
+}
+main details #new-exercise-form #new-exercise-submit:active {
+  opacity: 0.6;
+}
+main details .ex__list {
+  margin: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+main details .ex__list .check {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 2px solid var(--purple);
+  -webkit-box-shadow: var(--purple-glow);
+          box-shadow: var(--purple-glow);
+}
+main details .ex__list .todo-content {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 0%;
+          flex: 1 1 0%;
 }

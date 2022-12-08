@@ -38,7 +38,8 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 	--light:#EEE;
 	--pink:#EC4899;
 	--purple:#8B5Cf6;
-	--purple-glow:#8a5cf6b7;
+	--purple-glow: 0 0 4px rgba(138, 92, 246, 0.75);
+	--b-radius:15px;
 }
 body{
 	background-color: var(--dark);
@@ -80,7 +81,7 @@ header{
 				padding: 10px;
 				font-size: 15px;
 				width: 30%;
-				border-radius: 10px;
+				border-radius: var(--b-radius);
 			}
 		}
 	}
@@ -96,7 +97,7 @@ header{
 			background-color:var(--darker);
 			padding: 15px 15px 15px 25px;
 			margin-right: 10px;
-			border-radius: 10px;
+			border-radius: var(--b-radius);
 			font-size: 18px;
 		}
 		#new-category-submit{
@@ -119,61 +120,30 @@ header{
 }
 main{
 	margin: 15px 0 0 0;
-	border-radius: 10px;
+	border-radius: var(--b-radius);
 	padding: 10px;
 	details{
+		margin: 7px 0 7px 0px;
 		background-color: var(--darker);
-		border-radius: 10px;
+		border-radius: var(--b-radius);
 		summary{
 			background-color: var(--darkest);
-			border-radius: 10px;
+			border-radius: var(--b-radius);
 			display: block;
 			.list{
 				display: flex;
 				.todo-content{
-					flex: 1 1 0%;
-					cursor: pointer;
-					padding: 20px;
+					cursor: pointer; 	
 					input{
-						background-color: var(--darkest);
-						color: var(--light);
-						width:30%;
 						font-size: 25px;
-						transition: 0.4s;
-						&:not(:read-only){
-							color: var(--pink);
-						}
 					}
 				}
 				.actions{
-					display: flex;
-					align-items: center;
-					justify-content: space-between;
 					button{
 						font-size: 20px;
-						font-weight: 700;
-						text-transform: uppercase;
-						margin: 0 15px;
-						background-color: var(--darkest);
-						transition: 0.4s;
-						cursor: pointer;
-						&:hover{
-							opacity: 0.8;
-						}
-						&:active{
-							opacity:0.6;
-						}
-					}
-					.edit{
-						background-image: linear-gradient(to right, 
-						var(--pink), var(--purple));
-						-webkit-background-clip: text;
-						-webkit-text-fill-color: transparent;
-					}
-					.delete{
-						color: crimson;
 					}
 				}
+				
 			}
 		}
 		#new-exercise-form{
@@ -184,7 +154,7 @@ main{
 				background-color:var(--darkest);
 				padding: 15px 15px 15px 25px;
 				margin-right: 10px;
-				border-radius: 10px;
+				border-radius: var(--b-radius);
 				font-size: 18px;
 				color: var(--gray);
 			}
@@ -206,25 +176,100 @@ main{
 			}
 		}
 		.ex__list{
-			margin: 15px;
+			padding:0 15px 0 15px;
+			margin:0 20px 10px 20px;
 			display: flex;
 			align-items: center;
 			justify-content: center;
+			background-color: var(--darkest);
+			border-radius: var(--b-radius);
+			input:checked ~ .check::after{
+				width: 11px;
+				height: 11px;
+				opacity: 1;
+			}
 			.check{
 				display: flex;
 				border-radius: 50%;
-				width: 20px;
-				height: 20px;
+				width: 21px;
+				height: 21px;
 				justify-content: center;
 				align-items: center;
 				border: 2px solid var(--purple);
 				box-shadow: var(--purple-glow);
+				&:after{
+					content: '';
+					width: 0;
+					height: 0;
+					opacity: 0;
+					display: block;
+					border-radius: 50%;
+					transition: 0.2s ease-in-out;
+					background-color: var(--purple);
+					box-shadow: var(--purple-glow);
+				}
 			}
 			.todo-content{
-				flex: 1 1 0%;
+				&.done{
+					input{
+						text-decoration: line-through;
+						color: var(--gray);	
+					}
+				}
+				input{
+					font-size: 21px;
+				}
+				
+			}
+			.actions{
+				button{
+					font-size: 17px;
+				}
+				
 			}
 		}
 	}
 	
 	
+}
+.todo-content{
+	flex: 1 1 0%;
+	padding: 20px;
+	input{
+		background-color: var(--darkest);
+		color: var(--light);
+		width:30%;
+		transition: 0.4s;
+		&:not(:read-only){
+			color: var(--pink);
+		}
+	}
+}
+.actions{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	button{
+		font-weight: 700;
+		text-transform: uppercase;
+		margin: 0 15px;
+		background-color: var(--darkest);
+		transition: 0.4s;
+		cursor: pointer;
+		&:hover{
+			opacity: 0.8;
+		}
+		&:active{
+			opacity:0.6;
+		}
+	}
+	.edit{
+		background-image: linear-gradient(to right, 
+		var(--pink), var(--purple));
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
+	.delete{
+		color: crimson;
+	}
 }

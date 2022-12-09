@@ -14,7 +14,7 @@ window.addEventListener('load', () =>{
         <summary>
             <div class="list" id="todo-list">
                 <div class="todo-content">
-                    <input type="text" value="${newCat}" readonly/>
+                    <input id="new-category-val" type="text" value="${newCat}" readonly/>
                 </div>
                 <div class="actions">
                     <button class="edit">Edit</button>
@@ -30,6 +30,27 @@ window.addEventListener('load', () =>{
         </details>`
         );
         catInput.value = null;
+//delete and edit categories
+        const catEl = catList.querySelector('.spoiler');
+        const catEditEl = catList.querySelector('summary').querySelector('.edit');
+        const catDeleteEl = catList.querySelector('summary').querySelector('.delete');
+        const catInputEl = catList.querySelector('#new-category-val');
+        catEditEl.addEventListener('click', ()=>{
+            if (catEditEl.innerText.toLowerCase() == "edit") {
+                catInputEl.removeAttribute("readonly");
+                catInputEl.focus();
+                catEditEl.innerText = "Save";
+            } else {
+                catInputEl.setAttribute("readonly", "readonly");
+                catEditEl.innerText = "Edit";
+            }
+        });
+        catDeleteEl.addEventListener('click', () =>{
+            catList.removeChild(catEl);
+        });
+//
+        console.log(catEditEl);
+        console.log(catList);
         const exForm = document.querySelector('#new-exercise-form');
         const exInput = document.querySelector('#new-exercise-input');
         const exList = document.querySelector('.ex__list');
@@ -40,7 +61,6 @@ window.addEventListener('load', () =>{
                 alert('You have typed nothing!');
                 return;
             } 
-            console.log(exList);
             exList.insertAdjacentHTML('afterbegin',
             `<div class="exercise">    
                 <label >
@@ -57,6 +77,7 @@ window.addEventListener('load', () =>{
             </div>`
             );
             exInput.value = null;
+//edit and delete exercises
             const exEl = exList.querySelector('.exercise');
             const exEditEl = exList.querySelector('.edit');
             const exDeleteEl = exList.querySelector('.delete');
@@ -74,6 +95,7 @@ window.addEventListener('load', () =>{
             exDeleteEl.addEventListener('click', () =>{
                 exList.removeChild(exEl);
             });
+//
         });
     }); 
 }); 

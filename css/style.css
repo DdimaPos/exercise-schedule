@@ -242,7 +242,7 @@ main details #new-exercise-form #new-exercise-submit:hover {
 main details #new-exercise-form #new-exercise-submit:active {
   opacity: 0.6;
 }
-main details .ex__list {
+main details .exercise {
   padding: 0 15px 0 15px;
   margin: 0 20px 10px 20px;
   display: -webkit-box;
@@ -257,12 +257,12 @@ main details .ex__list {
   background-color: var(--darkest);
   border-radius: var(--b-radius);
 }
-main details .ex__list input:checked ~ .check::after {
+main details .exercise input:checked ~ .check::after {
   width: 11px;
   height: 11px;
   opacity: 1;
 }
-main details .ex__list .check {
+main details .exercise .check {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -279,7 +279,7 @@ main details .ex__list .check {
   -webkit-box-shadow: var(--purple-glow);
           box-shadow: var(--purple-glow);
 }
-main details .ex__list .check:after {
+main details .exercise .check:after {
   content: "";
   width: 0;
   height: 0;
@@ -292,24 +292,30 @@ main details .ex__list .check:after {
   -webkit-box-shadow: var(--purple-glow);
           box-shadow: var(--purple-glow);
 }
-main details .ex__list .todo-content.done input {
+main details .exercise .todo-content.done input {
   text-decoration: line-through;
   color: var(--gray);
 }
-main details .ex__list .todo-content input {
+main details .exercise .todo-content input {
   font-size: 21px;
 }
-main details .ex__list .actions button {
+main details .exercise .actions button {
   font-size: 17px;
 }
 
 .todo-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 20px;
   -webkit-box-flex: 1;
       -ms-flex: 1 1 0%;
           flex: 1 1 0%;
-  padding: 20px;
 }
 .todo-content input {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 50%;
+          flex: 0 1 50%;
   background-color: var(--darkest);
   color: var(--light);
   width: 30%;

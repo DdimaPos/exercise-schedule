@@ -175,7 +175,7 @@ main{
 				}
 			}
 		}
-		.ex__list{
+		.exercise{
 			padding:0 15px 0 15px;
 			margin:0 20px 10px 20px;
 			display: flex;
@@ -213,7 +213,7 @@ main{
 				&.done{
 					input{
 						text-decoration: line-through;
-						color: var(--gray);	
+						color: var(--gray);
 					}
 				}
 				input{
@@ -233,9 +233,11 @@ main{
 	
 }
 .todo-content{
-	flex: 1 1 0%;
+	display: flex;
 	padding: 20px;
+	flex: 1 1 0%;
 	input{
+		flex: 0 1 50%;
 		background-color: var(--darkest);
 		color: var(--light);
 		width:30%;

@@ -105,7 +105,7 @@ window.addEventListener("load", () =>{
     const catInput = document.querySelector('#new-category-input');
     catForm.addEventListener('submit', (ev) =>{
         ev.preventDefault();
-        const catVal ={
+        catVal ={
             content: ev.target.elements.content.value,
             //done: false,
             createdAt: new Date().getTime(),
@@ -114,7 +114,6 @@ window.addEventListener("load", () =>{
         todos.push(catVal);
 
         localStorage.setItem('todos', JSON.stringify(todos));
-
         ev.target.reset();
 
         DisplayCat();
@@ -128,6 +127,11 @@ function DisplayCat(){
     catList.innerHTML= '';
 
     todos.forEach(catVal => {
+        if (!catVal.content) {
+            return;
+        }
+        console.log('category');
+        //console.log(todos.indexOf(catVal)); 
         const catItem = document.createElement('details');
         catItem.classList.add('spoiler');
         const summary = document.createElement('summary');
@@ -137,7 +141,8 @@ function DisplayCat(){
         const edit = document.createElement('button');edit.classList.add('edit');
         const deleteButton = document.createElement('button');deleteButton.classList.add('delete');
         const exForm = document.createElement('form');exForm.id = 'new-exercise-form';
-        exForm.innerHTML=`<input id="new-exercise-input" placeholder="e.g push ups" type="text" />
+        const exList = document.createElement('div');exList.classList.add('ex__list');
+        exForm.innerHTML=`<input name="content" id="new-exercise-input" placeholder="e.g push ups" type="text" />
         <input id="new-exercise-submit" type="submit" value="Add exercise">`;
         catContent.innerHTML = `<input id="new-category-val" type="text" 
         value="${catVal.content}" readonly/>`;
@@ -147,11 +152,66 @@ function DisplayCat(){
         catList.appendChild(catItem);
         catItem.appendChild(summary);
         catItem.appendChild(exForm);
+        catItem.appendChild(exList);
         summary.appendChild(catEl);
         catEl.appendChild(catContent);
         catEl.appendChild(actions);
         actions.appendChild(edit);
         actions.appendChild(deleteButton);
+        const exInput = document.querySelector('#new-exercise-input');
+        exForm.addEventListener('submit', (ev) =>{
+            ev.preventDefault();
+            exVal ={
+                exercise: ev.target.elements.content.value,
+                done: false,
+                createdAt: new Date().getTime(),
+            }
+    
+            todos.push(exVal);
+    
+            localStorage.setItem('todos', JSON.stringify(todos));
+            
+            ev.target.reset();
+            DisplayEx(todos.indexOf(catVal));
+        });
+        DisplayEx(todos.indexOf(catVal));
         
     });
+}
+
+function DisplayEx(i) {
+    const exList = document.querySelector('.ex__list');
+    exList.innerHTML = ' ';
+    todos.forEach(exVal =>{
+        if (!exVal.exercise) {
+            return;
+            //todos.indexOf(exVal)<i
+        }
+        console.log('exercise');
+//      console.log(todos.indexOf(exVal));
+        const exItem = document.createElement('div');exItem.classList.add('exercise');
+        const label = document.createElement('label');
+        const input = document.createElement('input');
+        const span = document.createElement('span');span.classList.add()
+        input.type = 'checkbox'; input.checked = exVal.done;
+        const content = document.createElement('div');content.classList.add('todo-content')
+        const actions = document.createElement('div');actions.classList.add('actions');
+        const edit = document.createElement('button');edit.classList.add('edit');
+        const deleteButton = document.createElement('button');deleteButton.classList.add('delete');
+
+        content.innerHTML = `<input id="new-exercise-val"  type="text" 
+        value="${exVal.exercise}" readonly/>`;
+        edit.innerHTML = 'EDIT';
+        deleteButton.innerHTML = 'DELETE';
+        exItem.appendChild(label);
+        exItem.appendChild(content);
+        exItem.appendChild(actions);
+        label.appendChild(input);
+        label.appendChild(span);
+        actions.appendChild(edit);
+        actions.appendChild(deleteButton);
+        
+        exList.appendChild(exItem);
+    });
+    
 }

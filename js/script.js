@@ -79,15 +79,14 @@ function DisplayCat(i){
             localStorage.setItem('todos', JSON.stringify(todos));
             
             ev.target.reset();
-            DisplayEx(catVal);
+            DisplayEx(catVal, exList);
         });
-        DisplayEx(catVal);
-        
+        DisplayEx(catVal, exList);
     });
 }
 
-function DisplayEx(catVal) {
-    const exList = document.querySelector('.ex__list');
+function DisplayEx(catVal, exList) {
+    //const exList = document.querySelector('.ex__list');
     exList.innerHTML = ' ';
     console.log(exList);
     for(let i=0;i<catVal.exercises.length; i++){

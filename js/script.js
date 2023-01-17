@@ -81,6 +81,12 @@ function DisplayCat(){
             }
         });
 
+        deleteButton.addEventListener('click', e =>{
+            todos.splice(todos.indexOf(catVal),1);
+            localStorage.setItem('todos', JSON.stringify(todos));
+            DisplayCat();
+        });
+
         exForm.addEventListener('submit', (ev) =>{
             ev.preventDefault();
             exVal={
@@ -131,6 +137,13 @@ function DisplayEx(catVal, exList) {
         actions.appendChild(deleteButton);
         exList.appendChild(exItem);
 
+
+        content.innerHTML = `<input id="new-exercise-val"  type="text" 
+        value="${catVal.exercises[i].ex_name}" readonly/>`;
+        edit.innerHTML = 'EDIT';
+        deleteButton.innerHTML = 'DELETE';
+
+
         if(catVal.exercises[i].done){
             exItem.classList.add('done');
         }
@@ -158,13 +171,12 @@ function DisplayEx(catVal, exList) {
             }
         });
         //
-
-
-         content.innerHTML = `<input id="new-exercise-val"  type="text" 
-        value="${catVal.exercises[i].ex_name}" readonly/>`;
-        edit.innerHTML = 'EDIT';
-        deleteButton.innerHTML = 'DELETE';
-
+            
+        deleteButton.addEventListener('click', e =>{
+            catVal.exercises.splice(i,1);
+            localStorage.setItem('todos', JSON.stringify(todos));
+            DisplayEx(catVal, exList);
+        });
 
     };
     

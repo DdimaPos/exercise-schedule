@@ -6,7 +6,6 @@ window.addEventListener("load", () =>{
         ev.preventDefault();
         catVal ={
             content: ev.target.elements.content.value,
-            //done: false,
             createdAt: new Date().getTime(),
             exercises:[],
         }
@@ -15,10 +14,8 @@ window.addEventListener("load", () =>{
 
         localStorage.setItem('todos', JSON.stringify(todos));
         ev.target.reset();
-
         DisplayCat();
     });
-    
     DisplayCat();
 });
 
@@ -91,18 +88,23 @@ function DisplayEx(catVal, exList) {
     console.log(exList);
     for(let i=0;i<catVal.exercises.length; i++){
         console.log('exercise created');
-//      console.log(todos.indexOf(exVal));
-        const exItem = document.createElement('div');exItem.classList.add('exercise');
+        const exItem = document.createElement('div');
         const label = document.createElement('label');
         const input = document.createElement('input');
-        const span = document.createElement('span');span.classList.add()
-        input.type = 'checkbox'; input.checked = catVal.done;
-        const content = document.createElement('div');content.classList.add('todo-content')
-        const actions = document.createElement('div');actions.classList.add('actions');
-        const edit = document.createElement('button');edit.classList.add('edit');
-        const deleteButton = document.createElement('button');deleteButton.classList.add('delete');
-
-       
+        const span = document.createElement('span');
+        input.type = 'checkbox'; input.checked = catVal.exercises[i].done;
+        const content = document.createElement('div');
+        const actions = document.createElement('div');
+        const edit = document.createElement('button');
+        const deleteButton = document.createElement('button');
+        
+        exItem.classList.add('exercise');
+        span.classList.add('check');
+        content.classList.add('todo-content');
+        actions.classList.add('actions');
+        edit.classList.add('edit');
+        deleteButton.classList.add('delete');
+        
         exItem.appendChild(label);
         exItem.appendChild(content);
         exItem.appendChild(actions);
@@ -111,10 +113,25 @@ function DisplayEx(catVal, exList) {
         actions.appendChild(edit);
         actions.appendChild(deleteButton);
         exList.appendChild(exItem);
+
+        if(catVal.exercises[i].done){
+            exItem.classList.add('done');
+        }
+
+        input.addEventListener('click', e =>{
+            catVal.exercises[i].done = e.target.checked;
+            localStorage.setItem('todos', JSON.stringify(todos));
+
+            if(catVal.exercises[i].done) exItem.classList.add('done');
+            else exItem.classList.remove('done');
+        });
+
          content.innerHTML = `<input id="new-exercise-val"  type="text" 
         value="${catVal.exercises[i].ex_name}" readonly/>`;
         edit.innerHTML = 'EDIT';
         deleteButton.innerHTML = 'DELETE';
+
+
     };
     
 }

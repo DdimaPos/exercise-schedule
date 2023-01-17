@@ -257,6 +257,10 @@ main details .exercise {
   background-color: var(--darkest);
   border-radius: var(--b-radius);
 }
+main details .exercise.done input {
+  text-decoration: line-through;
+  color: var(--gray);
+}
 main details .exercise input:checked ~ .check::after {
   width: 11px;
   height: 11px;
@@ -291,10 +295,6 @@ main details .exercise .check:after {
   background-color: var(--purple);
   -webkit-box-shadow: var(--purple-glow);
           box-shadow: var(--purple-glow);
-}
-main details .exercise .todo-content.done input {
-  text-decoration: line-through;
-  color: var(--gray);
 }
 main details .exercise .todo-content input {
   font-size: 21px;

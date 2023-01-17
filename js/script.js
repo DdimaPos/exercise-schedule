@@ -108,9 +108,7 @@ function DisplayCat(){
 function DisplayEx(catVal, exList) {
     //const exList = document.querySelector('.ex__list');
     exList.innerHTML = ' ';
-    console.log(exList);
     for(let i=0;i<catVal.exercises.length; i++){
-        console.log('exercise created');
         const exItem = document.createElement('div');
         const label = document.createElement('label');
         const input = document.createElement('input');

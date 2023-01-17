@@ -19,7 +19,7 @@ window.addEventListener("load", () =>{
     DisplayCat();
 });
 
-function DisplayCat(i){
+function DisplayCat(){
     const catList = document.querySelector('.todo-list');
 
     catList.innerHTML= '';
@@ -64,6 +64,23 @@ function DisplayCat(i){
         value="${catVal.content}" readonly/>`;
         edit.innerHTML = 'EDIT';
         deleteButton.innerHTML = 'DELETE';
+
+        edit.addEventListener('click', e=>{
+            const input = summary.querySelector('input');
+            if(edit.innerText.toLowerCase()=="edit"){
+                input.removeAttribute('readonly');
+                input.focus();
+                edit.innerText="Save"; 
+            }
+            else{
+                input.setAttribute("readonly", "readonly");
+                edit.innerText="edit"; 
+                catVal.content = input.value;
+                localStorage.setItem('todos', JSON.stringify(todos));
+                DisplayCat();
+            }
+        });
+
         exForm.addEventListener('submit', (ev) =>{
             ev.preventDefault();
             exVal={
@@ -121,10 +138,27 @@ function DisplayEx(catVal, exList) {
         input.addEventListener('click', e =>{
             catVal.exercises[i].done = e.target.checked;
             localStorage.setItem('todos', JSON.stringify(todos));
-
             if(catVal.exercises[i].done) exItem.classList.add('done');
             else exItem.classList.remove('done');
         });
+        //вставить в функцию
+        edit.addEventListener('click', e=>{
+            const input = content.querySelector('input');
+            if(edit.innerText.toLowerCase()=="edit"){
+                input.removeAttribute('readonly');
+                input.focus();
+                edit.innerText="Save"; 
+            }
+            else{
+                input.setAttribute("readonly", "readonly");
+                edit.innerText="edit"; 
+                catVal.exercises[i].ex_name = input.value;
+                localStorage.setItem('todos', JSON.stringify(todos));
+                DisplayEx(catVal, exList);
+            }
+        });
+        //
+
 
          content.innerHTML = `<input id="new-exercise-val"  type="text" 
         value="${catVal.exercises[i].ex_name}" readonly/>`;

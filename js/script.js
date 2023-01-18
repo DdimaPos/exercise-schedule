@@ -52,6 +52,8 @@ window.addEventListener("load", () =>{
     const catForm = document.querySelector('#new-category-form');
     const catInput = document.querySelector('#new-category-input');
     catForm.addEventListener('submit', (ev) =>{
+        if(!catInput.value) {
+            ev.preventDefault();return;}
         ev.preventDefault();
         catVal ={
             content: ev.target.elements.content.value,
@@ -150,6 +152,8 @@ function DisplayCat(){
         });
 
         exForm.addEventListener('submit', (ev) =>{
+            if(!exForm.querySelector('#new-exercise-input').value) {
+                ev.preventDefault();return;}
             ev.preventDefault();
             exVal={
                 ex_name: ev.target.elements.content.value,

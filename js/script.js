@@ -1,3 +1,52 @@
+const startButton = document.querySelector('.start');
+const pauseButton = document.querySelector('.pause');
+const resetButton = document.querySelector('.reset');
+
+const hoursElement = document.querySelector('.hours');
+const minutesElement = document.querySelector('.minutes');
+const secondsElement = document.querySelector('.seconds');
+let interval, hours = 0, minutes = 0, seconds = 0;
+
+startButton.addEventListener('click', () => {
+    clearInterval(interval);
+    interval = setInterval(Stopwatch, 1000);
+});
+
+pauseButton.addEventListener('click', () => {
+    clearInterval(interval);
+});
+resetButton.addEventListener('click', ()=>{
+    clearInterval(interval);
+    hours = 0;
+    minutes = 0;
+    seconds = 0;
+    secondsElement.innerHTML = "00";
+    minutesElement.innerHTML = "00";
+    hoursElement.innerHTML = "00";
+});
+
+function Stopwatch() {
+    seconds++;
+    if (seconds <= 9) secondsElement.innerHTML = "0" + seconds;
+    if (seconds > 9) secondsElement.innerHTML = seconds;
+    if (seconds > 59) {
+        seconds = 0;
+        secondsElement.innerHTML = seconds;
+        minutes++;
+    }
+
+    if (minutes <= 9) minutesElement.innerHTML = "0" + minutes;
+    if (minutes > 9) minutesElement.innerHTML = minutes;
+    if (minutes > 59) {
+        minutes = 0;
+        minutesElement.innerHTML = minutes;
+        hours++;
+    }
+
+    if (hours <= 9) hoursElement.innerHTML = "0" + hours;
+    if (hours > 9) hoursElement.innerHTML = hours;
+}
+
 window.addEventListener("load", () =>{
     todos=JSON.parse(localStorage.getItem('todos')) || [];
     const catForm = document.querySelector('#new-category-form');
@@ -16,8 +65,21 @@ window.addEventListener("load", () =>{
         ev.target.reset();
         DisplayCat();
     });
+    DisplayDate();
     DisplayCat();
 });
+
+
+function DisplayDate(){
+    let date = new Date();
+    let year = date.getFullYear();
+    let month = date.getMonth();
+    let day = date.getDate();
+    document.querySelector('.day').innerText = day;
+    if(month<10) document.querySelector('.month').innerText = "0" + (month+1);
+    else document.querySelector('.month').innerText = month+1;
+    document.querySelector('.year').innerText = year;
+}
 
 function DisplayCat(){
     const catList = document.querySelector('.todo-list');

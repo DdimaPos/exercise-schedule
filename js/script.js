@@ -123,7 +123,7 @@ function DisplayCat(){
         actions.appendChild(deleteButton);
         
         exForm.innerHTML=`<input name="content" id="new-exercise-input" placeholder="e.g push ups" type="text" />
-        <input id="new-exercise-submit" type="submit" value="Add exercise">`;
+        <input id="new-exercise-submit" type="submit" value="Add">`;
         catContent.innerHTML = `<input id="new-category-val" type="text" 
         value="${catVal.content}" readonly/>`;
         edit.innerHTML = 'EDIT';

@@ -133,17 +133,36 @@ main{
 			.list{
 				display: flex;
 				.todo-content{
+					display: flex;
+					align-items: center;
 					cursor: pointer; 	
 					input{
 						font-size: 25px;
 					}
+					&::before{
+						content: '';
+						width: 12px;
+						height: 12px;
+						margin-right: 9px;
+						display: block;
+						border-right:3px solid var(--gray);
+						border-top:3px solid var(--gray);
+						transform: rotate(45deg);
+						transition: 0.25s;
+					}	
 				}
 				.actions{
 					button{
 						font-size: 20px;
 					}
 				}
-				
+			}
+		}
+		&[open]{
+			summary{
+				.todo-content::before{
+					transform: rotate(135deg);
+				}
 			}
 		}
 		#new-exercise-form{
@@ -276,6 +295,14 @@ main{
 	}
 }
 @media(max-width: 800px){
+	header{
+		.timer__buttons{
+			button{
+				font-size: 10px !important;
+			}
+			
+		}
+	}
 	.todo-content{
 		input{
 			flex: 1 1 75%;

@@ -183,7 +183,7 @@ main{
 				}
 			}
 			padding:0 15px 0 15px;
-			margin:0 20px 10px 20px;
+			margin:0 15px 10px 15px;
 			display: flex;
 			align-items: center;
 			justify-content: center;
@@ -254,7 +254,7 @@ main{
 	button{
 		font-weight: 700;
 		text-transform: uppercase;
-		margin: 0 15px;
+		margin: 0 10px;
 		background-color: var(--darkest);
 		transition: 0.4s;
 		cursor: pointer;
@@ -273,5 +273,27 @@ main{
 	}
 	.delete{
 		color: crimson;
+	}
+}
+@media(max-width: 800px){
+	.todo-content{
+		input{
+			flex: 1 1 75%;
+			font-size: 17px !important;
+		}
+		
+	}
+	.actions{
+		button{
+			font-size: 15px !important;
+		}
+	}
+	.exercise{
+		button{
+			font-size: 13px !important;
+		}
+		.todo-content{
+				padding: 15px 10px 15px 10px;
+		}
 	}
 }

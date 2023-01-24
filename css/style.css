@@ -244,7 +244,7 @@ main details #new-exercise-form #new-exercise-submit:active {
 }
 main details .exercise {
   padding: 0 15px 0 15px;
-  margin: 0 20px 10px 20px;
+  margin: 0 15px 10px 15px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -343,7 +343,7 @@ main details .exercise .actions button {
 .actions button {
   font-weight: 700;
   text-transform: uppercase;
-  margin: 0 15px;
+  margin: 0 10px;
   background-color: var(--darkest);
   -webkit-transition: 0.4s;
   transition: 0.4s;
@@ -363,4 +363,22 @@ main details .exercise .actions button {
 }
 .actions .delete {
   color: crimson;
+}
+
+@media (max-width: 800px) {
+  .todo-content input {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 75%;
+            flex: 1 1 75%;
+    font-size: 17px !important;
+  }
+  .actions button {
+    font-size: 15px !important;
+  }
+  .exercise button {
+    font-size: 13px !important;
+  }
+  .exercise .todo-content {
+    padding: 15px 10px 15px 10px;
+  }
 }

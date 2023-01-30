@@ -265,6 +265,9 @@ main{
 			color: var(--pink);
 		}
 	}
+	#new-exercise-val{
+		flex: 0 1 100%;
+	}
 }
 .actions{
 	display: flex;

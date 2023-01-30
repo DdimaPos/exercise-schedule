@@ -1,5 +1,5 @@
 # exercise-schedule
-It's a to-do list with categories wich I created it to write down exercises for my workout routine. 
+It's a to-do list with categories wich I created to write down exercises for my workout routine. 
 For example you can create category named ''monday'' or ''office'' and write there the tasks you have to do:"cook soup","change keyboard" and others. 
 
 You can delete and edit categories and tasks. Also tasks can be checked. 
